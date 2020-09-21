@@ -13,7 +13,7 @@
 <body>
 <form class="form-signin">
     <div class="text-center mb-4">
-        <a href="{{ $url }}"><img class="mb-4" src="/images/line/2x/32dp/btn_login_base.png"></a>
+        <a href="{{ $url }}"><img class="mb-4" src="https://raw.githubusercontent.com/kiddchantw/testLineService/master/public/btn_base.png"></a>
     </div>
     <p class="mt-5 mb-3 text-muted text-center">Yulin &copy; 2019</p>
 </form>
