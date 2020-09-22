@@ -17,6 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//v1 
+// // Route::get('/callback/login', 'LineLoginController@LoginCallBack');
+// Route::get('/callback', 'LineLoginController@LoginCallBack');
 
-Route::get('/line', 'LineLoginController@pageLine');
-Route::get('/callback/login', 'LineLoginController@lineLoginCallBack');
+
+
+
+Route::get('/linelogin', 'LineLoginController@lineLogin')->name('linelogin');
+Route::get('/callback', 'LineLoginController@callback')->name('callback');
+Route::get('/', function () {
+    return view('welcome');
+});
