@@ -12,7 +12,11 @@ use Illuminate\Support\Str;
 
 class LineLoginController extends Controller
 {
-    public function lineLogin()
+  public static $callbockURL = 'https://09594375f36c.ngrok.io/callback';
+
+  
+  
+  public function lineLogin()
     {
         // CSRF防止のためランダムな英数字を生成
         $state = Str::random(32);
@@ -23,7 +27,8 @@ class LineLoginController extends Controller
         $uri ="https://access.line.me/oauth2/v2.1/authorize?";
         $response_type = "response_type=code";
         $client_id = "&client_id=1654949919";
-        $redirect_uri ="&redirect_uri=http://localhost:8000/callback";
+        // $redirect_uri ="&redirect_uri=http://localhost:8000/callback";
+        $redirect_uri ="&redirect_uri=".self::$callbockURL;
         // $state_uri = "&state=".$state;
         $state_uri = "&state=test";
         // $scope = "&scope=openid";
@@ -35,24 +40,20 @@ class LineLoginController extends Controller
         // . $prompt . $nonce_uri;
   
         return redirect($uri);
-  
-
-        //https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1654949919&redirect_uri=http://localhost/callback&state=12345abcde&scope=profile%20openid&nonce=09876xyz
-
-
-        //https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=剛剛的ChannelID&redirect_uri=剛剛設定的Callback網址&scope=openid%20profile&nonce=隨意亂數
-
     }
 
 
     public function getAccessToken($req)
     {
   
+
+
       $headers = [ 'Content-Type: application/x-www-form-urlencoded' ];
       $post_data = array(
         'grant_type'    => 'authorization_code',
         'code'          => $req['code'],
-        'redirect_uri'  => 'http://localhost:8000/callback',
+        // 'redirect_uri'  => 'http://localhost:8000/callback', 
+        'redirect_uri'  => self::$callbockURL, 
         'client_id'     => '1654949919',
         'client_secret' => '50cd3fbeaca7ad2f4e2d388b2a3bcdbd'
       );
@@ -110,7 +111,7 @@ class LineLoginController extends Controller
     }
     
     
-    //v1
+    //v1  accessTokem拿不到可能是callback的問題
     // protected $lineService;
 
     // public function __construct(LineService $lineService)

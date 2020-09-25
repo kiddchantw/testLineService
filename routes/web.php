@@ -26,6 +26,13 @@ Route::get('/', function () {
 
 Route::get('/linelogin', 'LineLoginController@lineLogin')->name('linelogin');
 Route::get('/callback', 'LineLoginController@callback')->name('callback');
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+// Route::post('/line/webhook', 'LineTestController@webhook')->name('line.webhook');
+
+Route::post('/webhook','LineTestController@webhook');
+
+2
