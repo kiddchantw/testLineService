@@ -35,4 +35,3 @@ Route::get('/callback', 'LineLoginController@callback')->name('callback');
 
 Route::post('/webhook','LineTestController@webhook');
 
-2

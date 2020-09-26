@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 
 class LineLoginController extends Controller
 {
-  public static $callbockURL = 'https://09594375f36c.ngrok.io/callback';
+  public static $callbockURL = 'https://7c4d620e42cf.ngrok.io/callback';
 
   
   
